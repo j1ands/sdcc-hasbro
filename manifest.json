@@ -1,12 +1,12 @@
 {
   "manifest_version": 2,
 
-  "name": "PucaTrade Extension",
-  "description": "This extension auto-refreshes and sends trade",
+  "name": "SDCC Bot",
+  "description": "This extension auto-refreshes and adds to cart",
   "version": "1.0",
 
   "browser_action": {
-    "default_icon": "icon.png",
+    "default_icon": "logo_hasbro.png",
     "default_popup": "popup.html"
   },
   "permissions": [
@@ -15,9 +15,9 @@
   ],  
   "content_scripts": [
     {
-      "matches": ["https://pucatrade.com/*"],
+      "matches": ["http://www.hasbrotoyshop.com/*"],
       "js": ["myscript.js"]
     }
   ],
-  "web_accessible_resources": ["script.js"]
+  "web_accessible_resources": ["script.js", "jquery.min.js"]
 }

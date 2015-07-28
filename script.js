@@ -1,41 +1,38 @@
-//console.log(loadTableData);
+jQuery(function() {
+    //jQuery(".top-menu").hide();
+    
+    //first item text RTGray12[10]
+    //first add to cart img[14]
+        //then img[15], img[16]
+        //then img[20]
+    var items = jQuery(".RTGray12").slice(10);
 
-var tradeCounter = 0;
-
-var search = {
-    intersect: true,
-    show_foils: undefined,
-    search: ""
-}
-
-setTimeout(function(){
-    autoTrade();
-}, 10000);
-
-var returnCounter = 0;
-var load = true;
-
-function autoTrade() {
-    if($("a.fancybox-close").length > 0) {
-        $("a.fancybox-close").click();   
-    }
-    loadTableData(search);
-    setTimeout(function(){
-        var sendcards = $("a.fancybox-send");
-        if(sendcards.length > 0){
-            sendcards[0].click();
-            setTimeout(function(){
-                var confirmtrade = $("#confirm-trade-button");
-                console.log(confirmtrade);
-                confirmtrade.click();
-                tradeCounter++;
-                if(tradeCounter < 2) {
-                    autoTrade();
-                }
-            }, 750);
-        } else {
-            autoTrade();
+    for(var count = 0; count < items.length; count++) {
+        
+        if(items[count].children[0].text.toLowerCase().indexOf("magic") > -1)
+        {
+            var cartid = findCart(count+1, 0);
+            count = items.length;
+            window.open("https://dl.dropboxusercontent.com/u/45487211/Guitar.mp3");
+            jQuery("img")[cartid].click();
         }
-    }, 950);
-    console.log(tradeCounter);
-}
+        
+        if(count == items.length - 1) {
+            setTimeout(function(){
+                location.reload(true);
+            }, 500);
+        }
+    }
+    
+    function findCart(num, count) {
+        if(num <= 3){
+            return 14 + (6 * count) + num - 1;
+        }
+        else {
+            return findCart(num-3, count+1);
+        }
+    }
+        
+    
+});
+
