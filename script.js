@@ -9,7 +9,7 @@ jQuery(function() {
 
     for(var count = 0; count < items.length; count++) {
         
-        if(items[count].children[0].text.toLowerCase().indexOf("magic") > -1)
+        if(items[count].children[0] != undefined && items[count].children[0].text.toLowerCase().indexOf("magic") > -1)
         {
             var cartid = findCart(count+1, 0);
             count = items.length;
@@ -17,7 +17,7 @@ jQuery(function() {
             jQuery("img")[cartid].click();
         }
         
-        if(count == items.length - 1) {
+        if(count == (items.length - 1)) {
             setTimeout(function(){
                 location.reload(true);
             }, 500);
